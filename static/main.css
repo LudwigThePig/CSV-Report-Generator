@@ -1,0 +1,27 @@
+body{
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  background-image: url('https://oyster.ignimgs.com/mediawiki/apis.ign.com/the-legend-of-zelda-hd/c/c7/Tarrey_Town.png');
+  background-position: center top; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+}
+
+#main{
+  background: rgba(0, 0, 0, 0.4);
+  width: auto;
+  height: auto;
+  margin: auto;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.output{
+  background: rgba(112, 0, 0, 0.4);
+  height: 200px;
+  width: 400px;
+
+}
