@@ -6,6 +6,9 @@ body{
   background-repeat: no-repeat; 
   background-size: cover; 
 }
+h1, h2, h3{
+  text-align: center;
+}
 
 #main{
   background: rgba(0, 0, 0, 0.4);
@@ -17,6 +20,24 @@ body{
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+#change-input-mode{
+  width: auto;
+  height: auto;
+  padding: 8px;
+  background: #fff;
+  color: #222;
+  font-weight:bold;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+}
+#text-input{
+  display: none;
+}
+#file-input{
+  display: inline;
 }
 
 #output{

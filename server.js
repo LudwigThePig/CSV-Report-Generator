@@ -8,22 +8,32 @@ const path =  require('path');
 
 const app = express();
 
+app.use(express.urlencoded());
 app.use(cors({origin: '*'}));
+// app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser());
-
 app.use(express.static(__dirname + '/static'));
 
 app.post('/csv', (req, res, next) => {
-  const jsonInput = req.body;
-  const csv = csvParser(jsonInput);
-  fs.writeFile(__dirname + '/csv.txt', csv, (err) => {
+  const jsonInput = req.body.file;
+  fs.readFile(req.body.file, 'utf8', (err, data) => {
     if (err) {
       console.log(err);
-      res.send({'message': err});
+      res.json({'error': err})
       return;
     }
-    res.json({'csv' : csv})
+    const csv = csvParser(data);
+    res.json({'csv': csv});
   })
+  // const csv = csvParser(jsonInput);
+  // fs.writeFile(__dirname + '/csv.txt', csv, (err) => {
+  //   if (err) {
+  //     console.log(err);
+  //     res.send({'error': err});
+  //     return;
+  //   }
+  //   res.json({'csv' : csv})
+  // })
 });
 
 app.get('/download', (req, res, next) => {
