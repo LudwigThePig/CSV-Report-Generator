@@ -16,15 +16,26 @@ const fetchCSV = (text) => {
     .catch(err => console.log(err));
 }
 
-document.getElementById('json-input').addEventListener('submit', (e)=>{
-  e.preventDefault();
-  const textarea = e.path[0][0].value;
-  fetchCSV(textarea);
-})
+const fetchDownload = () => {
+  return fetch(`${URI}/download`)
+    .then(res => res)
+    .then(file => window.location = '/download')
+    .catch(err => console.log(err));
+}
 
 const updateOutput = (csv) => {
   document.getElementById('output').innerHTML = csv;
 }
+
+document.getElementById('json-input').addEventListener('submit', e => {
+  e.preventDefault();
+  const textarea = e.path[0][0].value;
+  fetchCSV(textarea);
+});
+
+document.getElementById('download').addEventListener('click', e => {
+  fetchDownload();
+})
 
 const exampleJSON = {
   "firstName": "Joshie",
