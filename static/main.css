@@ -25,3 +25,10 @@ body{
   width: 400px;
 
 }
+
+#download{
+  display: none;
+  font-weight: bold;
+  color: white;
+  font-size: 1.4em;
+}
