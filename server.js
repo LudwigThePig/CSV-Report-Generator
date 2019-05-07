@@ -1,13 +1,21 @@
+const port = 3000;
 const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const csvParser = require('./csvParser');
+
 const app = express();
 
-const port = 3000;
+app.use(cors({origin: '*'}));
+app.use(bodyParser());
 
 app.use(express.static(__dirname + '/static'));
 
 app.post('/csv', (req, res, next) => {
-  console.log(req.body);
-  res.json({'csv' : 'hello'});
+  const jsonInput = req.body;
+  const csv = csvParser(jsonInput);
+  console.log('server', csv);
+  res.json({'csv' : csv});
 })
 
 app.listen(3000, (err) => {
