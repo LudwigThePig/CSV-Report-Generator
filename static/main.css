@@ -19,7 +19,7 @@ body{
   flex-direction: column;
 }
 
-.output{
+#output{
   background: rgba(112, 0, 0, 0.4);
   height: 200px;
   width: 400px;

@@ -12,10 +12,19 @@ const fetchCSV = (text) => {
 
   return fetch(`${URI}/csv`, options)
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => updateOutput(data.csv))
     .catch(err => console.log(err));
 }
 
+document.getElementById('json-input').addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const textarea = e.path[0][0].value;
+  fetchCSV(textarea);
+})
+
+const updateOutput = (csv) => {
+  document.getElementById('output').innerHTML = csv;
+}
 
 const exampleJSON = {
   "firstName": "Joshie",
@@ -64,13 +73,3 @@ const exampleJSON = {
   }
 ]
 };
-
-
-
-
-
-document.getElementById('json-input').addEventListener('submit', (e)=>{
-  e.preventDefault();
-  const textarea = e.path[0][0].value;
-  fetchCSV(textarea);
-})
