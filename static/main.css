@@ -41,10 +41,22 @@ h1, h2, h3{
 }
 
 #output{
-  background: rgba(112, 0, 0, 0.4);
-  height: 200px;
-  width: 400px;
+  background: rgba(8, 97, 4, 0.4);
+  height: 40vh;
+  width: 50vw;
 
+}
+
+.csv-row{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid white;
+}
+.csv-row p{
+  margin: 3px;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  padding: 0 6px;;
 }
 
 #download{

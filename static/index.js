@@ -6,13 +6,9 @@ let textInput = false;
 ////__________________________________________________________________
 //FETCH DATA FROM API
 const fetchCSV = (text, contentType) => {
-  const body = {json: text}
   const options = {
     method: 'POST',
-    body: text,
-    // headers: {
-    //   'Content-Type': contentType
-    // }
+    body: text
   }
 
   return fetch(`${URI}/csv`, options)
@@ -32,7 +28,20 @@ const fetchDownload = () => {
 //__________________________________________________________________
 //UPDATE VIEW
 const updateOutput = (csv) => {
-  document.getElementById('output').innerHTML = csv;
+  let rows = csv.split('\n');
+  console.log(rows)
+  rows.forEach(row => {
+    let div = document.createElement('div');
+    div.classList.add('csv-row');
+    row.split(',').forEach(col => {
+      let el = document.createElement('p');
+      el.innerHTML = col;
+      div.appendChild(el);
+    })
+    // el.innerHTML = row;
+    document.getElementById('output').appendChild(div);
+  })
+  // document.getElementById('output').innerHTML = csv;
   document.getElementById('download').style.display = 'inline'
 }
 
@@ -48,14 +57,7 @@ const formSubmit = (e) => {
 const formEl = document.getElementById('json-input');
 formEl.addEventListener('submit', e => {
   e.preventDefault();
-
-  // let contents = document.getElementById('file-input');//e.path[0][1].value;
   let input = new FormData(formEl);
-  // input.append('file', e.target.file)
-  // for (var [key, value] of input.entries()) { 
-  //   console.log(key, value);
-  // }
-  // console.log(input);
   fetchCSV(input, 'multipart/form-data');
 });
 
@@ -63,15 +65,30 @@ document.getElementById('download').addEventListener('click', e => {
   fetchDownload();
 });
 
-document.getElementById('change-input-mode').addEventListener('click', e => {
-  console.log('hello')
-  if (fileInput) {
-    document.getElementById('text-input').style.display = 'inline';
-    document.getElementById('file-input').style.display = 'none';    
-  } else {
-    document.getElementById('text-input').style.display = 'none';
-    document.getElementById('file-input').style.display = 'inline';   
-  }
-  fileInput = !fileInput;
-  textInput = !textInput;
-})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// document.getElementById('change-input-mode').addEventListener('click', e => {
+//   console.log('hello')
+//   if (fileInput) {
+//     document.getElementById('text-input').style.display = 'inline';
+//     document.getElementById('file-input').style.display = 'none';    
+//   } else {
+//     document.getElementById('text-input').style.display = 'none';
+//     document.getElementById('file-input').style.display = 'inline';   
+//   }
+//   fileInput = !fileInput;
+//   textInput = !textInput;
+// })

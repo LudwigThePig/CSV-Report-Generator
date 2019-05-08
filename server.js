@@ -22,7 +22,6 @@ app.use(express.static(__dirname + '/static'));
 const type = upload.single('file')
 app.post('/csv', type, (req, res, next) => {
   const jsonInput = req.file;
-  console.log('req.file', req.file)
   fs.readFile(jsonInput.path, 'utf8', (err, data) => {
     if (err) {
       console.log(err);
@@ -43,7 +42,6 @@ app.post('/csv', type, (req, res, next) => {
 });
 
 app.get('/download', (req, res, next) => {
-  console.log('request received')
   res.download(__dirname + '/csv.csv');
 });
 
