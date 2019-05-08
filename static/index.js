@@ -28,6 +28,8 @@ const fetchDownload = () => {
 //__________________________________________________________________
 //UPDATE VIEW
 const updateOutput = (csv) => {
+  const output = document.getElementById('output');
+  output.innerHTML = '';
   let rows = csv.split('\n');
   rows.forEach(row => {
     let div = document.createElement('div');
@@ -37,10 +39,8 @@ const updateOutput = (csv) => {
       el.innerHTML = col;
       div.appendChild(el);
     })
-    // el.innerHTML = row;
-    document.getElementById('output').appendChild(div);
+    output.appendChild(div);
   })
-  // document.getElementById('output').innerHTML = csv;
   document.getElementById('download').style.display = 'inline'
 }
 
