@@ -1,7 +1,4 @@
 const URI = 'http://localhost:3000';
-let fileInput = true;
-let textInput = false;
-
 
 ////__________________________________________________________________
 //FETCH DATA FROM API
@@ -48,11 +45,6 @@ const updateOutput = (csv) => {
 //__________________________________________________________________
 //EVENT LISTENERS
 
-const formSubmit = (e) => {
-  console.log('IAMNOTDOINGMYJOB', e)
-  e.preventDefault();
-}
-
 const formEl = document.getElementById('json-input');
 formEl.addEventListener('submit', e => {
   e.preventDefault();
@@ -63,31 +55,3 @@ formEl.addEventListener('submit', e => {
 document.getElementById('download').addEventListener('click', e => {
   fetchDownload();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// document.getElementById('change-input-mode').addEventListener('click', e => {
-//   console.log('hello')
-//   if (fileInput) {
-//     document.getElementById('text-input').style.display = 'inline';
-//     document.getElementById('file-input').style.display = 'none';    
-//   } else {
-//     document.getElementById('text-input').style.display = 'none';
-//     document.getElementById('file-input').style.display = 'inline';   
-//   }
-//   fileInput = !fileInput;
-//   textInput = !textInput;
-// })

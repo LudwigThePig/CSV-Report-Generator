@@ -1,22 +1,28 @@
 module.exports = (input) => {
   input = JSON.parse(input);
+  //the names of fields
   const headers = Object.keys(input).slice(0, -1);
+  //add id and other fields
   headers.unshift('id');
-  headers.push('other');
   let counter = 0;
-  let csv = [headers]
+  headers.push('other');
+
+  let csv = [headers];
+
   const recurse = (node) => {
     let others = [];
     const rowKeys = Object.keys(node).slice(0, -1);
+
+    //replace empty fields with null
     headers.slice(1).forEach((header, i) => {
       if (!rowKeys.includes(header) && header !== 'other') {
         node[header] = 'null';
-        rowKeys.splice( i, 0, header );
-        console.log(header, i);
-      }
-    })
+        rowKeys.splice( i, 0, header );      }
+    });
+
+    //the main parsing function
     const row = rowKeys.map(key =>{
-      //check for unique keys
+      //check for unique fields and push to other
       if (!headers.includes(key)) {
         others.push(node[key]);
       } else {
@@ -29,10 +35,10 @@ module.exports = (input) => {
     counter++;
     row.push(others.join(" "));
 
-    //Push it!
+    //Push it! Bop it!
     csv.push(row);
 
-    //if children, parse recursively
+    //if node has children, parse children
     if (node.children !== []) {
       node.children.forEach(child => recurse(child));
     } else {
