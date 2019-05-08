@@ -30,22 +30,21 @@ app.post('/csv', type, (req, res, next) => {
       return;
     }
     const csv = csvParser(data);
-    res.json({'csv': csv});
+    fs.writeFile(__dirname + '/csv.csv', csv, (err) => {
+      if (err) {
+        console.log(err);
+        res.send({'error': err});
+        return;
+      }
+      res.json({'csv' : csv})
+    });
   });
-  // const csv = csvParser(jsonInput);
-  // fs.writeFile(__dirname + '/csv.txt', csv, (err) => {
-  //   if (err) {
-  //     console.log(err);
-  //     res.send({'error': err});
-  //     return;
-  //   }
-  //   res.json({'csv' : csv})
-  // })
+
 });
 
 app.get('/download', (req, res, next) => {
   console.log('request received')
-  res.download(__dirname + '/csv.txt');
+  res.download(__dirname + '/csv.csv');
 });
 
 app.listen(3000, (err) => {
