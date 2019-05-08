@@ -29,7 +29,6 @@ const fetchDownload = () => {
 //UPDATE VIEW
 const updateOutput = (csv) => {
   let rows = csv.split('\n');
-  console.log(rows)
   rows.forEach(row => {
     let div = document.createElement('div');
     div.classList.add('csv-row');

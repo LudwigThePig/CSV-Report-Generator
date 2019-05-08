@@ -7,7 +7,15 @@ module.exports = (input) => {
   let csv = [headers]
   const recurse = (node) => {
     let others = [];
-    const row = Object.keys(node).slice(0, -1).map(key =>{
+    const rowKeys = Object.keys(node).slice(0, -1);
+    headers.slice(1).forEach((header, i) => {
+      if (!rowKeys.includes(header) && header !== 'other') {
+        node[header] = 'null';
+        rowKeys.splice( i, 0, header );
+        console.log(header, i);
+      }
+    })
+    const row = rowKeys.map(key =>{
       //check for unique keys
       if (!headers.includes(key)) {
         others.push(node[key]);

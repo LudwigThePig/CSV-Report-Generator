@@ -35,7 +35,7 @@ app.post('/csv', type, (req, res, next) => {
         res.send({'error': err});
         return;
       }
-      res.json({'csv' : csv})
+      res.json({'csv' : csv});
     });
   });
 
