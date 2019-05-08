@@ -1,6 +1,6 @@
-id,firstName,lastName,county,city,role,sales
-0,Joshie,Wyattson,San Mateo,San Mateo,Broker,1000000
-1,Beth Jr.,Johnson,San Mateo,Pacifica,Manager,2900000
-2,Smitty,Won,San Mateo,Redwood City,Sales Person,4800000
-3,Allen,Price,San Mateo,Burlingame,Sales Person,2500000
-4,Beth,Johnson,San Francisco,San Francisco,Broker/Sales Person,7500000
+id,firstName,lastName,county,city,role,sales,other
+0,Joshie,Wyattson,San Mateo,San Mateo,Broker,1000000,
+1,Beth Jr.,Johnson,San Mateo,Pacifica,Manager,2900000,,So unique
+2,Smitty,Won,San Mateo,Redwood City,Sales Person,4800000,
+3,Allen,Price,San Mateo,Burlingame,Sales Person,2500000,
+4,Beth,Johnson,San Francisco,San Francisco,Broker/Sales Person,7500000,

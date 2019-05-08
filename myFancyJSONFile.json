@@ -13,6 +13,7 @@
     "city": "Pacifica",
     "role": "Manager",
     "sales": 2900000,
+    "aUniqueKey": "So unique",
     "children": [
       {
         "firstName": "Smitty",
