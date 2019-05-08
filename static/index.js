@@ -9,10 +9,10 @@ const fetchCSV = (text, contentType) => {
   const body = {json: text}
   const options = {
     method: 'POST',
-    body: JSON.stringify(exampleJSON),
-    headers: {
-      'Content-Type': contentType
-    }
+    body: text,
+    // headers: {
+    //   'Content-Type': contentType
+    // }
   }
 
   return fetch(`${URI}/csv`, options)
@@ -45,19 +45,18 @@ const formSubmit = (e) => {
   e.preventDefault();
 }
 
-document.getElementById('json-input').addEventListener('submit', e => {
+const formEl = document.getElementById('json-input');
+formEl.addEventListener('submit', e => {
   e.preventDefault();
-  console.log('click', e);
-  let input;
-  if (textInput) {
-   input = e.path[0][0].value;
-  } else {
-    let contents = document.getElementById('file-input');
-    input = e.path[0][1].value;
-    // e.path[0][1].value
-    console.log(contents)
-  }
-  fetchCSV(input, 'application/json');
+
+  // let contents = document.getElementById('file-input');//e.path[0][1].value;
+  let input = new FormData(formEl);
+  // input.append('file', e.target.file)
+  // for (var [key, value] of input.entries()) { 
+  //   console.log(key, value);
+  // }
+  // console.log(input);
+  fetchCSV(input, 'multipart/form-data');
 });
 
 document.getElementById('download').addEventListener('click', e => {

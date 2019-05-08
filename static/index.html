@@ -12,22 +12,24 @@
   <h1>Hello CSV-son World!</h1>
   <div id="main">
     <div id="change-input-mode">Change Input Mode-son?</div>
-    <form action="/csv" method="POST" target="iframe">
+    <!-- TO MEET BASIC REQUIREMENTS -->
+    <!-- <form action="/csv" method="POST" target="iframe">
       <label>JSON Input:</label><br />
-      <!-- <textarea id="text-input" rows="10" cols="50"></textarea><br /> -->
+       <textarea id="text-input" rows="10" cols="50"></textarea><br />
       <input type="file" name="file" accept=".json" id="file-input" /><br />
       <input type="submit" />
-    </form>
-    <!-- <form id="json-input">
-      <label>JSON Input:</label><br />
-      <textarea id="text-input" rows="10" cols="50"></textarea><br />
-      <input type="file" accept=".json" id="file-input" /><br />
-      <input type="submit" />
     </form> -->
+    <!-- <iframe name="iframe"></iframe> -->
+    <form id="json-input">
+      <label>JSON Input:</label><br />
+      <!-- <textarea id="text-input" rows="10" cols="50"></textarea><br /> -->
+      <input type="file" accept=".json" id="file-input" name="file" /><br />
+      <input type="submit" />
+    </form>
     
     <div>
       <h3>CSV Output</h3>
-      <iframe name="iframe"></iframe>
+      <div id="output"></div>
       <a href="localhost:3000/download" id="download" download>Download This CSV File!</a>
     </div>
   </div>
